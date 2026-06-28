@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+
+# Environment and sensitive data
+.env
+.env.local

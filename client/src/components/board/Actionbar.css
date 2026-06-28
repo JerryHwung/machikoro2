@@ -1,0 +1,220 @@
+/* ActionBar.css */
+
+.action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 12px 1rem;
+  background: #16202b;
+  border-top: 1px solid #243040;
+  flex-shrink: 0;
+  min-height: 64px;
+}
+
+.action-bar.waiting {
+  justify-content: center;
+  gap: 16px;
+}
+
+.action-bar.game-over {
+  background: rgba(240, 165, 0, 0.06);
+  border-top-color: rgba(240, 165, 0, 0.3);
+}
+
+/* ── Primary action button ──────────────────────── */
+.action-primary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 20px;
+  background: #f0a500;
+  border: none;
+  border-radius: 10px;
+  color: #0f1923;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s, transform 0.1s;
+}
+
+.action-primary:hover:not(:disabled) {
+  background: #d99400;
+}
+
+.action-primary:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.action-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-primary.rolling {
+  background: #d99400;
+}
+
+/* ── Secondary action button ────────────────────── */
+.action-secondary {
+  height: 36px;
+  padding: 0 14px;
+  background: transparent;
+  border: 1px solid #3a4a5a;
+  border-radius: 8px;
+  color: #b0a090;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+  white-space: nowrap;
+}
+
+.action-secondary:hover {
+  background: #1e2d3d;
+  border-color: #f0a500;
+  color: #f0a500;
+}
+
+/* ── Skip button ─────────────────────────────────── */
+.action-skip {
+  height: 36px;
+  padding: 0 14px;
+  background: transparent;
+  border: 1px solid #2a3a4a;
+  border-radius: 8px;
+  color: #4a5a6a;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+
+.action-skip:hover {
+  background: #1e2d3d;
+  color: #7a8a9a;
+}
+
+/* ── Dice toggle (1 die / 2 dice) ───────────────── */
+.dice-toggle {
+  display: flex;
+  border: 1px solid #2a3a4a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dice-btn {
+  height: 36px;
+  padding: 0 14px;
+  background: transparent;
+  border: none;
+  color: #4a5a6a;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+
+.dice-btn:first-child {
+  border-right: 1px solid #2a3a4a;
+}
+
+.dice-btn.active {
+  background: #1e2d3d;
+  color: #e8dcc8;
+}
+
+.dice-btn:hover:not(.active) {
+  background: rgba(255,255,255,0.03);
+  color: #7a8a9a;
+}
+
+/* ── Roll result display ────────────────────────── */
+.roll-result {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dice-face {
+  font-size: 28px;
+  line-height: 1;
+  animation: dieRoll 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes dieRoll {
+  from { transform: rotate(-30deg) scale(0.5); opacity: 0; }
+  60%  { transform: rotate(8deg) scale(1.15); }
+  to   { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+
+.roll-total {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f0a500;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.doubles-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: rgba(167, 139, 250, 0.15);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  color: #a78bfa;
+}
+
+/* ── Misc ────────────────────────────────────────── */
+.action-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.action-hint {
+  font-size: 12px;
+  color: #4a5a6a;
+}
+
+.pending-note {
+  font-size: 12px;
+  color: #a78bfa;
+  font-style: italic;
+}
+
+.waiting-text {
+  font-size: 13px;
+  color: #4a5a6a;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.game-over-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f0a500;
+  letter-spacing: -0.3px;
+}
+
+.dice-spinner {
+  font-size: 20px;
+  display: inline-block;
+  animation: spin 0.4s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}

@@ -1,0 +1,386 @@
+/* LobbyPage.css */
+
+/* ── Page layout ─────────────────────────────────────────── */
+.lobby-page {
+  min-height: 100vh;
+  background: #0f1923;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  gap: 2rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e8dcc8;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.lobby-hero {
+  text-align: center;
+}
+
+.lobby-title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  color: #e8dcc8;
+  margin: 0;
+}
+
+.lobby-title .accent {
+  color: #f0a500;
+}
+
+.lobby-subtitle {
+  font-size: 0.85rem;
+  color: #7a6e5f;
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+}
+
+/* ── Dice ─────────────────────────────────────────────────── */
+.dice-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.die {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1.5px solid #f0a500;
+  background: rgba(240, 165, 0, 0.08);
+  position: relative;
+  animation: dieRoll 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes dieRoll {
+  from { transform: rotate(-25deg) scale(0.6); opacity: 0; }
+  60%  { transform: rotate(6deg) scale(1.1); }
+  to   { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+
+.dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f0a500;
+}
+
+.dot-center       { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.dot-top-left     { top: 6px; left: 6px; }
+.dot-top-right    { top: 6px; right: 6px; }
+.dot-mid-left     { top: 50%; left: 6px; transform: translateY(-50%); }
+.dot-mid-right    { top: 50%; right: 6px; transform: translateY(-50%); }
+.dot-bottom-left  { bottom: 6px; left: 6px; }
+.dot-bottom-right { bottom: 6px; right: 6px; }
+
+/* ── Cards layout ─────────────────────────────────────────── */
+.lobby-cards {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  max-width: 560px;
+}
+
+.lobby-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  color: #4a4035;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+/* ── Individual card ──────────────────────────────────────── */
+.card {
+  flex: 1;
+  background: #16202b;
+  border: 1px solid #243040;
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.2s;
+  min-width: 0;
+}
+
+.card.active {
+  border-color: #f0a500;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(240, 165, 0, 0.12);
+  color: #f0a500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-icon.success {
+  background: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e8dcc8;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: #7a6e5f;
+  margin-top: 1px;
+}
+
+/* ── Form ─────────────────────────────────────────────────── */
+.card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #9a8e7f;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.field input {
+  height: 38px;
+  background: #0f1923;
+  border: 1px solid #2a3a4a;
+  border-radius: 8px;
+  color: #e8dcc8;
+  padding: 0 12px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field input::placeholder {
+  color: #4a4035;
+}
+
+.field input:focus {
+  border-color: #f0a500;
+  box-shadow: 0 0 0 3px rgba(240, 165, 0, 0.12);
+}
+
+.field input.mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  letter-spacing: 3px;
+  font-size: 15px;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn {
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid #2a3a4a;
+  background: transparent;
+  color: #e8dcc8;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.btn:hover:not(:disabled) {
+  background: #1e2d3d;
+  border-color: #3a4a5a;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background: #f0a500;
+  border-color: #f0a500;
+  color: #0f1923;
+  font-weight: 600;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: #d99400;
+  border-color: #d99400;
+}
+
+/* ── Room code box ────────────────────────────────────────── */
+.room-code-box {
+  background: rgba(240, 165, 0, 0.07);
+  border: 1px solid rgba(240, 165, 0, 0.25);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.room-code-label {
+  font-size: 11px;
+  color: #9a8060;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.room-code-value {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 24px;
+  font-weight: 600;
+  color: #f0a500;
+  letter-spacing: 5px;
+}
+
+/* ── Player list ──────────────────────────────────────────── */
+.player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.player-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #b0a090;
+}
+
+.player-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.player-dot.connected {
+  background: #34d399;
+}
+
+.player-dot.waiting {
+  background: #3a4a5a;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.25; }
+}
+
+.player-badge {
+  margin-left: auto;
+  font-size: 10px;
+  padding: 1px 8px;
+  border-radius: 99px;
+  background: rgba(240, 165, 0, 0.1);
+  color: #f0a500;
+  font-weight: 500;
+}
+
+.player-badge.you {
+  background: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+}
+
+.muted {
+  color: #4a4035;
+}
+
+/* ── Start area ───────────────────────────────────────────── */
+.start-area {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.status-note {
+  font-size: 11px;
+  color: #6a5e4f;
+  text-align: center;
+}
+
+/* ── Error banner ─────────────────────────────────────────── */
+.error-banner {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  color: #fca5a5;
+  font-size: 13px;
+  padding: 10px 16px;
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.lobby-footer {
+  font-size: 11px;
+  color: #3a3028;
+  letter-spacing: 0.04em;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .lobby-cards {
+    flex-direction: column;
+  }
+
+  .lobby-divider {
+    flex-direction: row;
+    padding: 8px 0;
+  }
+
+  .lobby-divider::before,
+  .lobby-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #243040;
+    margin: 0 10px;
+  }
+}

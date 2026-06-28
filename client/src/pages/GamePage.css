@@ -1,0 +1,41 @@
+/* GamePage.css */
+
+.game-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0f1923;
+  color: #e8dcc8;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.game-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.game-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: 1rem;
+  padding: 1rem;
+  min-width: 0;
+}
+
+/* ── No state fallback ─────────────────────────── */
+.game-no-state {
+  min-height: 100vh;
+  background: #0f1923;
+  color: #e8dcc8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
+}

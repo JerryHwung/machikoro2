@@ -1,0 +1,110 @@
+/* PlayerTableau.css */
+
+.tableau {
+  background: #16202b;
+  border: 1px solid #243040;
+  border-radius: 12px;
+  padding: 1rem;
+  transition: border-color 0.2s;
+}
+
+.tableau.active {
+  border-color: #f0a500;
+}
+
+.tableau-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.tableau-coins {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #f0a500;
+}
+
+/* ── Landmarks ──────────────────────────────────── */
+.landmarks-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.landmark-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid;
+  cursor: default;
+  transition: opacity 0.15s;
+}
+
+.landmark-chip.built {
+  background: rgba(240, 165, 0, 0.1);
+  border-color: rgba(240, 165, 0, 0.3);
+  color: #f0a500;
+}
+
+.landmark-chip.unbuilt {
+  background: rgba(255,255,255,0.03);
+  border-color: #2a3a4a;
+  color: #4a5a6a;
+}
+
+.landmark-icon {
+  font-size: 12px;
+}
+
+.landmark-cost {
+  margin-left: 2px;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* ── Establishments ─────────────────────────────── */
+.tableau-empty {
+  font-size: 12px;
+  color: #4a4035;
+  padding: 8px 0;
+}
+
+.establishments-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.estab-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid color-mix(in srgb, var(--chip-color) 25%, transparent);
+  border-radius: 7px;
+  padding: 4px 9px;
+  cursor: default;
+}
+
+.estab-activation {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--chip-color);
+  font-family: 'JetBrains Mono', monospace;
+  min-width: 16px;
+  text-align: center;
+}
+
+.estab-name {
+  font-size: 11px;
+  color: #b0a090;
+}

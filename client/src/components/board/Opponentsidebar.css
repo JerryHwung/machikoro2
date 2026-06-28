@@ -1,0 +1,138 @@
+/* OpponentSidebar.css */
+
+.opponent-sidebar {
+  background: #16202b;
+  border-left: 1px solid #243040;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: width 0.2s ease;
+  overflow: hidden;
+}
+
+.opponent-sidebar.open  { width: 200px; }
+.opponent-sidebar.closed { width: 36px; }
+
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #243040;
+  color: #7a6e5f;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  width: 100%;
+  transition: color 0.12s, background 0.12s;
+}
+
+.sidebar-toggle:hover {
+  background: #1e2d3d;
+  color: #b0a090;
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 8px;
+}
+
+/* ── Opponent card ───────────────────────────────── */
+.opponent-card {
+  background: #0f1923;
+  border: 1px solid #243040;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.2s;
+}
+
+.opponent-card.active {
+  border-color: #f0a500;
+}
+
+.opp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.opp-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.opp-active-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f0a500;
+  flex-shrink: 0;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 2px #f0a500; }
+  to   { box-shadow: 0 0 8px #f0a500; }
+}
+
+.opp-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e8dcc8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.opp-coins {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #f0a500;
+  flex-shrink: 0;
+}
+
+.opp-landmarks {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.opp-landmark-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: #243040;
+  border: 1px solid #2a3a4a;
+  transition: background 0.15s;
+}
+
+.opp-landmark-dot.built {
+  background: #f0a500;
+  border-color: #f0a500;
+}
+
+.opp-landmark-label {
+  font-size: 10px;
+  color: #4a5a6a;
+}
+
+.opp-card-count {
+  font-size: 10px;
+  color: #4a5a6a;
+}

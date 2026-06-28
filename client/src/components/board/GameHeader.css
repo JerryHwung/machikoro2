@@ -1,0 +1,112 @@
+/* GameHeader.css */
+
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  height: 48px;
+  background: #16202b;
+  border-bottom: 1px solid #243040;
+  flex-shrink: 0;
+  gap: 1rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.header-round {
+  color: #7a6e5f;
+  white-space: nowrap;
+}
+
+.header-divider {
+  color: #3a4a5a;
+}
+
+.header-turn {
+  color: #b0a090;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-turn.my-turn {
+  color: #f0a500;
+  font-weight: 600;
+}
+
+.header-center {
+  flex-shrink: 0;
+}
+
+.phase-badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--phase-color) 12%, transparent);
+  color: var(--phase-color);
+  border: 1px solid color-mix(in srgb, var(--phase-color) 30%, transparent);
+  white-space: nowrap;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.coin-display {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(240, 165, 0, 0.08);
+  border: 1px solid rgba(240, 165, 0, 0.2);
+  border-radius: 99px;
+  padding: 3px 10px;
+}
+
+.coin-icon {
+  font-size: 13px;
+}
+
+.coin-count {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f0a500;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.log-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #7a6e5f;
+  background: transparent;
+  border: 1px solid #243040;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+
+.log-toggle:hover {
+  background: #1e2d3d;
+  color: #b0a090;
+}
+
+.log-toggle.active {
+  background: rgba(240, 165, 0, 0.1);
+  color: #f0a500;
+  border-color: rgba(240, 165, 0, 0.3);
+}

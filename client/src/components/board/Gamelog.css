@@ -1,0 +1,149 @@
+/* GameLog.css */
+
+/* ── Backdrop ────────────────────────────────────── */
+.log-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 40;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Drawer ──────────────────────────────────────── */
+.log-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #16202b;
+  border-top: 1px solid #243040;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 55vh;
+  transform: translateY(100%);
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.4);
+}
+
+.log-drawer.open {
+  transform: translateY(0);
+}
+
+/* ── Handle row ──────────────────────────────────── */
+.log-handle-row {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px 8px;
+  gap: 10px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #1e2d3d;
+}
+
+.log-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 99px;
+  background: #2a3a4a;
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%);
+}
+
+.log-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #9a8e7f;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex: 1;
+  text-align: center;
+}
+
+.log-close {
+  background: transparent;
+  border: none;
+  color: #4a5a6a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.12s, background 0.12s;
+}
+
+.log-close:hover {
+  color: #b0a090;
+  background: #1e2d3d;
+}
+
+/* ── Log list ────────────────────────────────────── */
+.log-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.log-empty {
+  font-size: 12px;
+  color: #4a4035;
+  text-align: center;
+  padding: 16px 0;
+}
+
+/* ── Log entries ─────────────────────────────────── */
+.log-entry {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 3px 0;
+  border-bottom: 1px solid #1a2530;
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.log-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #3a4a5a;
+  flex-shrink: 0;
+}
+
+.log-message {
+  color: #7a8a9a;
+  flex: 1;
+}
+
+/* Entry type colours */
+.log-turn .log-message {
+  color: #4a5a6a;
+  font-style: italic;
+}
+
+.log-win .log-message {
+  color: #f0a500;
+  font-weight: 600;
+}
+
+.log-income .log-message {
+  color: #b0a090;
+}
+
+.log-build .log-message {
+  color: #34d399;
+}

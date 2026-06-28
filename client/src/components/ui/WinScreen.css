@@ -1,0 +1,249 @@
+/* WinScreen.css */
+
+.win-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Win card ─────────────────────────────────────── */
+.win-card {
+  position: relative;
+  background: #16202b;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  overflow: hidden;
+  animation: popIn 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.win-card.winner {
+  border: 1px solid rgba(240, 165, 0, 0.4);
+  box-shadow: 0 0 60px rgba(240, 165, 0, 0.15);
+}
+
+.win-card.loser {
+  border: 1px solid #243040;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  60%  { transform: scale(1.03); }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* ── Confetti ─────────────────────────────────────── */
+.confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti-dot {
+  position: absolute;
+  top: -10px;
+  left: var(--x);
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--color);
+  animation: fall 1.2s ease-in var(--delay) both;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(420px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ── Content ──────────────────────────────────────── */
+.win-icon {
+  font-size: 56px;
+  line-height: 1;
+  animation: bounce 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s both;
+}
+
+@keyframes bounce {
+  from { transform: scale(0) rotate(-20deg); }
+  70%  { transform: scale(1.2) rotate(5deg); }
+  to   { transform: scale(1)   rotate(0deg); }
+}
+
+.win-headline {
+  font-size: 28px;
+  font-weight: 700;
+  color: #e8dcc8;
+  margin: 0;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.win-card.winner .win-headline {
+  color: #f0a500;
+}
+
+.win-sub {
+  font-size: 13px;
+  color: #7a6e5f;
+  text-align: center;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Scores ───────────────────────────────────────── */
+.win-scores {
+  width: 100%;
+  background: #0f1923;
+  border: 1px solid #243040;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.win-scores-title {
+  font-size: 10px;
+  font-weight: 600;
+  color: #4a5a6a;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: background 0.15s;
+}
+
+.score-row.score-winner {
+  background: rgba(240, 165, 0, 0.08);
+}
+
+.score-rank {
+  font-size: 11px;
+  color: #4a5a6a;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.score-name {
+  flex: 1;
+  color: #b0a090;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.score-winner .score-name {
+  color: #e8dcc8;
+}
+
+.score-you {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 99px;
+  background: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.score-crown {
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.score-landmarks {
+  font-size: 11px;
+  color: #4a5a6a;
+  flex-shrink: 0;
+}
+
+.score-coins {
+  font-size: 12px;
+  color: #f0a500;
+  font-weight: 600;
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Actions ──────────────────────────────────────── */
+.win-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.win-btn-primary {
+  width: 100%;
+  height: 44px;
+  background: #f0a500;
+  border: none;
+  border-radius: 12px;
+  color: #0f1923;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s, transform 0.1s;
+}
+
+.win-btn-primary:hover {
+  background: #d99400;
+}
+
+.win-btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ── Mobile ───────────────────────────────────────── */
+@media (max-width: 440px) {
+  .win-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .win-icon {
+    font-size: 44px;
+  }
+
+  .win-headline {
+    font-size: 24px;
+  }
+}
