@@ -317,10 +317,10 @@ docker compose build --no-cache
 docker compose up
 ```
 
-### Production Deployment In Future
+### Production Deployment
 
-Production Docker is not implemented yet. When it is added, prefer a single
-runtime image that:
+This repo includes a root production `Dockerfile` for hosted deployment. It
+builds a single runtime image that:
 
 1. installs server dependencies,
 2. installs and builds the Vite client,
@@ -328,25 +328,31 @@ runtime image that:
 4. exposes one public port through `process.env.PORT`,
 5. keeps Socket.IO on the same origin as the frontend.
 
-Recommended future files:
+Production file:
 
 ```text
 Dockerfile
-docker-compose.prod.yml
-.env.production
 ```
 
-Expected future production commands:
+Build the production image locally:
 
 ```bash
-docker compose -f docker-compose.prod.yml build
-docker compose -f docker-compose.prod.yml up -d
+docker build -t machikoro2 .
+docker run --rm -p 3001:3001 machikoro2
 ```
+
+Then open `http://localhost:3001`. For platforms that provide a runtime port,
+the server reads `process.env.PORT` and falls back to `3001`.
 
 For hosted deployment, use a platform that supports long-running Node processes
 and WebSockets. The current app stores rooms and game state in server memory, so
 running multiple production replicas will require shared state first, such as
 Redis or a database.
+
+For a detailed PandaStack free-tier deployment path, see
+[`docs/pandastack-deployment.md`](docs/pandastack-deployment.md). The guide
+uses a single containerized Node web service so the built React client and
+Socket.IO backend share one public origin.
 
 ---
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './ActionBar.css';
+import './Actionbar.css';
 import { CoinIcon } from '../ui/GameIcons';
 
 export default function ActionBar({ gameState, me, isMyTurn, onAction }) {
