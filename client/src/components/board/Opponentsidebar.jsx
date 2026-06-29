@@ -1,4 +1,4 @@
-import './OpponentSidebar.css';
+import './Opponentsidebar.css';
 import { CoinIcon } from '../ui/GameIcons';
 
 export default function OpponentSidebar({ opponents, activePlayerId, isOpen, onToggle }) {

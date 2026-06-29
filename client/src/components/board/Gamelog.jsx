@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import './GameLog.css';
+import './Gamelog.css';
 
 export default function GameLog({ log, isOpen, onClose }) {
   const listRef = useRef(null);

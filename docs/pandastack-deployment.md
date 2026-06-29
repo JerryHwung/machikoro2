@@ -57,35 +57,33 @@ added later.
 
 ## Pre-Deploy Requirements
 
-The current repo has development Docker files only. Before these PandaStack
-steps can be completed end to end, add production deployment support:
+This repo includes the production support needed for the PandaStack steps:
 
-1. Add a root production `Dockerfile`.
-   - Build `client/` with `npm ci` and `npm run build`.
-   - Install production dependencies for `server/`.
-   - Copy `client/dist` into the runtime image.
-   - Start the backend with `npm start`.
+1. Root production `Dockerfile`.
+   - Builds `client/` with `npm ci` and `npm run build`.
+   - Installs production dependencies for `server/`.
+   - Copies `client/dist` into the runtime image.
+   - Starts the backend with `npm start`.
 
-2. Update the server port binding.
-   - Use `process.env.PORT || 3001`.
-   - Keep binding to `0.0.0.0`.
+2. Server port binding.
+   - Uses `process.env.PORT || 3001`.
+   - Binds to `0.0.0.0`.
    - This lets PandaStack provide the public runtime port while local fallback
      still works.
 
-3. Add a health endpoint.
-   - Add `GET /health`.
-   - Return a `200` response, for example `ok`.
+3. Health endpoint.
+   - `GET /health` returns HTTP `200` with `ok`.
    - Use this as the PandaStack health check path.
 
-4. Serve the React production build from Express.
-   - Serve static assets from `client/dist`.
-   - Add an SPA fallback that returns `client/dist/index.html`.
-   - Keep Socket.IO routes outside the static fallback.
+4. React production build serving from Express.
+   - Serves static assets from `client/dist` when that folder exists.
+   - Adds an SPA fallback that returns `client/dist/index.html`.
+   - Keeps Socket.IO routes outside the static fallback.
 
-5. Update production Socket.IO URL behavior.
-   - Keep `VITE_SOCKET_URL` as an explicit override.
-   - In production, default to `window.location.origin`.
-   - In local dev, continue using `window.location.hostname:3001`.
+5. Production Socket.IO URL behavior.
+   - Keeps `VITE_SOCKET_URL` as an explicit override.
+   - In production, defaults to `window.location.origin`.
+   - In local dev, continues using `window.location.hostname:3001`.
 
 6. Run one replica only.
    - Keep autoscaling disabled for now.
@@ -230,7 +228,7 @@ multiple replicas, add a Socket.IO adapter and shared room/game state first.
 Use the free single-service deployment for testing and demos. Before broader
 use, plan these upgrades:
 
-1. Add production Docker and same-origin serving.
+1. Keep production Docker and same-origin serving verified.
 2. Restrict CORS to the deployed domain.
 3. Add Redis or database-backed room/game state.
 4. Add a Socket.IO adapter before multiple replicas.

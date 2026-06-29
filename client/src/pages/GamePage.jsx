@@ -4,9 +4,9 @@ import useGameStore from '../store/gameStore';
 import GameHeader from '../components/board/GameHeader';
 import Marketplace from '../components/board/Marketplace';
 import PlayerTableau from '../components/board/PlayerTableau';
-import OpponentSidebar from '../components/board/OpponentSidebar';
-import ActionBar from '../components/board/ActionBar';
-import GameLog from '../components/board/GameLog';
+import OpponentSidebar from '../components/board/Opponentsidebar';
+import ActionBar from '../components/board/Actionbar';
+import GameLog from '../components/board/Gamelog';
 import WinScreen from '../components/ui/WinScreen';
 import './GamePage.css';
 

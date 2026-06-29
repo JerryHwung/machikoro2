@@ -2,10 +2,21 @@ const express = require('express');
 const { createServer } = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
 const RoomManager = require('./rooms/RoomManager');
 
 const app = express();
 app.use(cors());
+app.get('/health', (req, res) => res.status(200).type('text/plain').send('ok'));
+
+const clientDistPath = path.resolve(__dirname, '../../client/dist');
+if (fs.existsSync(clientDistPath)) {
+  app.use(express.static(clientDistPath));
+  app.get(/^\/(?!socket\.io\/).*/, (req, res) => {
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+}
 
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
@@ -24,4 +35,5 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => roomManager.handleDisconnect(socket));
 });
 
-httpServer.listen(3001, '0.0.0.0', () => console.log('Server running on port 3001'));
+const port = process.env.PORT || 3001;
+httpServer.listen(port, '0.0.0.0', () => console.log(`Server running on port ${port}`));
