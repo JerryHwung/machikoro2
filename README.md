@@ -348,6 +348,11 @@ and WebSockets. The current app stores rooms and game state in server memory, so
 running multiple production replicas will require shared state first, such as
 Redis or a database.
 
+For a detailed PandaStack free-tier deployment path, see
+[`docs/pandastack-deployment.md`](docs/pandastack-deployment.md). The guide
+uses a single containerized Node web service so the built React client and
+Socket.IO backend share one public origin.
+
 ---
 
 ## What's Next (Build Order)
